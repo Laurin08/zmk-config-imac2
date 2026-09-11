@@ -1,0 +1,20 @@
+/* Deaktiviert NFC, damit P0.09 und P0.10 in Zukunft nutzbar sind */
+&nfct {
+    status = "disabled";
+};
+
+/ {
+    chosen {
+        /* Wir sagen ZMK: Ignoriere die Shield-Tasten, nutze unsere eigenen! */
+        zmk,kscan = &my_kscan;
+    };
+
+    my_kscan: my_kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "MY_KSCAN";
+        input-gpios
+            = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 1 (X) */
+            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 2 (Z) */
+            ;
+    };
+};
