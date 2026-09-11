@@ -1,0 +1,20 @@
+/* Deaktiviert NFC, damit P0.09 und P0.10 als normale Tasten nutzbar sind */
+&nfct {
+    status = "disabled";
+};
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "KSCAN";
+        /* Hier definieren wir die Pins für deine Tasten */
+        input-gpios
+            = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 1 (X in der Keymap) */
+            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 2 (Z in der Keymap) */
+            ;
+    };
+};
