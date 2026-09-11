@@ -5,16 +5,18 @@
 
 / {
     chosen {
-        /* Wir sagen ZMK: Ignoriere die Shield-Tasten, nutze unsere eigenen! */
         zmk,kscan = &my_kscan;
     };
 
     my_kscan: my_kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "MY_KSCAN";
+        /* Hier sind deine 4 Pins - ZMK liest strikt von oben nach unten */
         input-gpios
-            = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 1 (X) */
-            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 2 (Z) */
+            = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 1 */
+            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 2 */
+            , <&gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 3 */
+            , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> /* Taste 4 */
             ;
     };
 };

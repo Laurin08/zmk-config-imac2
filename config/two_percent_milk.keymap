@@ -13,9 +13,12 @@
         compatible = "zmk,keymap";
 
         base {
+            /* Tasten: W, B, D, M */
             bindings = <
-                &kp X
-                &kp Z
+                &kp W
+                &kp B
+                &kp D
+                &kp M
             >;
         };
     };
